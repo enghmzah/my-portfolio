@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="portfolioApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Zaghloul Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="MainController">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg   navbar-dark bg-primary">
+        <a class="navbar-brand text-white" href="#">Ahmed Alaa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">                                                            
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>   
+                <li class="nav-item"><a class="nav-link  " href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link  " href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link " href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="photo_2024-09-13_20-04-32.jpg" alt="Ahmed Zaghloul" class="img-fluid rounded-circle" 
+                style="width: 150px; height: 150px;">
+            </div>
+            <div class="col-md-6">
+                <h2>About Me</h2>
+                <p>Hello! I am Ahmed Alaa, a Front-End Developer with a background in Mechatronics Engineering. I aim to build interactive and SEO-optimized websites.
+                     I continuously develop my skills independently and strive to create innovative solutions in every project.</p>
+                <a href="">For more....</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Skills</h2>
+            <div class="row">
+                <div class="col-md-4" ng-repeat="skill in skills">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ skill.name }}</h5>
+                            <p class="card-text">{{ skill.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Projects</h2>
+            <div class="row">
+                <div class="col-md-4" ng-repeat="project in projects">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ project.image }}" alt="{{ project.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+<script type="text/javascript" src="email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("MYP70Mv2fj4mXwJuz");
+   })();
+</script>
+
+<section id="contact" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center">Contact Me</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript">
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_3h6nx75', 'template_k5asmxp', this)
+      .then(function() {
+        // Clear the form fields
+        document.getElementById('contact-form').reset();
+      }, function(error) {
+        // Optionally, handle the error here if needed
+        console.error('Failed to send email. Error:', error);
+      });
+  });
+</script>
+
+    
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-3">
+        <p>&copy; 2024 Ahmed Alaa</p>
+        <p>
+            <a href="https://www.linkedin.com/in/ahmed-alaa205?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-white">LinkedIn</a> |
+            <a href="https://twitter.com/ahmedalaa" target="_blank" class="text-white">Twitter</a> |
+            <a href="https://www.instagram.com/ahmedalaa" target="_blank" class="text-white">Instagram</a>
+        </p>
+    </footer>
+
+     
+   
+    <!-- Bootstrap JS, AngularJS -->
+    
+    <script src="jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
